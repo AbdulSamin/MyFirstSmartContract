@@ -1,24 +1,13 @@
-SimpleStorage2
+Setting Up the Arbitrum Environment
 
-Mappings:
+To deploy the contract on the Arbitrum Sepolia testnet, I first connected MetaMask to the Arbitrum Sepolia network. This required adding the network details manually in MetaMask, including the RPC URL, chain ID, and currency symbol. Afterward, I ensured I had test ETH by using a Sepolia faucet to fund the account for transactions. Remix IDE was used to write, compile, and deploy the smart contract.
 
-I created a mapping called nameToFavoriteNumber, which allows us to link each person's name to their favorite number.
-This makes it easy to look up a person's favorite number by their name.
-For example, if you add a person with addPerson("Alice", 42), you can retrieve Alice’s favorite number (42) by calling getFavoriteNumberByName("Alice").
+Writing, Compiling, and Deploying the Contract
 
-Events:
+The contract was a simple smart contract with a message state variable. A constructor was added to initialize the message, and a public function allowed the message to be updated. I wrote the contract in Solidity, ensuring it adhered to best practices, including using the appropriate data locations (memory). After writing the code, I compiled it using the Solidity compiler in Remix and ensured there were no errors. The next step was deployment. Using the Injected Provider - MetaMask environment in Remix, I deployed the contract to the Arbitrum Sepolia testnet, confirming the transaction in MetaMask.
 
-An event called NumberUpdated was added to log changes to the favoriteNumber.
-Every time storeNumber is called to update the favoriteNumber, the contract emits a NumberUpdated event with the new number.
-Events help track changes and make it easier to see what's happening when the contract is used, especially in applications like Remix or blockchain explorers.
+Challenges Faced and Solutions
 
-Data Locations:
+A key challenge was ensuring compatibility between the deployed contract and the Arbitrum network, especially when configuring the network in MetaMask. To resolve this, I carefully verified the RPC details and ensured the correct chain ID was used. Another issue arose when insufficient gas caused a deployment error. This was solved by manually increasing the gas limit in Remix before deploying. Finally, verifying the contract on Arbiscan required using the exact compiler version and enabling optimization settings matching the deployment.
 
-Storage: favoriteNumber is stored persistently in the contract, meaning it remains in memory even after transactions. This is the default for state variables (variables declared outside of functions).
-Memory: A temporary variable (tempResult) was created in the multiplyFavoriteNumber function to perform a quick calculation. Memory variables are erased after the function finishes running.
-Calldata: The processStringData function takes a string input as a calldata parameter. Calldata is a read-only, non-persistent data location that’s more efficient for temporary, external function inputs.
-
-
-challenges
-
-there was no challenges in implementing these functions.
+By following these steps and addressing challenges methodically, I successfully deployed and verified the contract on Arbitrum Sepolia.
